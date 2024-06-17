@@ -211,7 +211,7 @@ form button:hover {
 }
 
 /* Responsive adjustments */
-@media (min-width: 300px) {
+@media (min-width: 200px) {
     header .logo {
         width: 18rem; /* Even larger width for larger screens */
     }
