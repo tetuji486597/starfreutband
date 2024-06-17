@@ -28,7 +28,32 @@ document.addEventListener('DOMContentLoaded', function() {
     const nav = document.querySelector('header nav');
     const form = document.getElementById('contact-form');
     const formMessage = document.getElementById('form-message');
+    const fadeInElements = document.querySelectorAll('.fade-in');
 
+    const isElementInViewport = (el) => {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    };
+
+    const checkFadeInElements = () => {
+        fadeInElements.forEach(el => {
+            if (isElementInViewport(el)) {
+                el.classList.add('fade-in-visible');
+            }
+        });
+    };
+
+    window.addEventListener('scroll', checkFadeInElements);
+    window.addEventListener('resize', checkFadeInElements);
+
+    // Initial check in case any elements are already in view
+    checkFadeInElements();
+    
     loadEvents();
 
     function handleHeaderCollapse() {
