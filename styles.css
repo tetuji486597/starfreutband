@@ -213,14 +213,14 @@ form button:hover {
 /* Responsive adjustments */
 @media (min-width: 200px) {
     header .logo {
-        width: 10rem; /* Even larger width for larger screens */
-        padding-bottom: 10%;
+        width: 12rem; /* Even larger width for larger screens */
+        padding-bottom: 5%;
     }
     body {
-        font-size: 15px; /* Larger font size for larger screens */
+        font-size: 20px; /* Larger font size for larger screens */
     }
     header, footer {
-        font-size: 15px; /* Larger font size for header and footer on larger screens */
+        font-size: 20px; /* Larger font size for header and footer on larger screens */
     }
     header nav .small-logo {
         width: 50px; /* Hide the small logo on larger screens */
@@ -231,23 +231,47 @@ form button:hover {
     #small-logo {
         margin: 0 0 0 8px;
     }
-    .music-preview {
-        max-width: 150px;
-    }
 }
 
 @media (min-width: 400px) {
     header .logo {
-        width: 22rem; /* Even larger width for larger screens */
+        width: 16rem; /* Even larger width for larger screens */
     }
     body {
-        font-size: 30px; /* Larger font size for larger screens */
+        font-size: 25px; /* Larger font size for larger screens */
     }
     header, footer {
-        font-size: 30px; /* Larger font size for header and footer on larger screens */
+        font-size: 25px; /* Larger font size for header and footer on larger screens */
+    }
+    header nav .small-logo {
+        width: 60px; /* Hide the small logo on larger screens */
+    }
+    nav ul li {
+        margin: 0 5px;
+    }
+}
+
+@media (min-width: 768px) {
+    header .logo {
+        width: 25rem; /* Even larger width for larger screens */
+    }
+    body {
+        font-size: 35px; /* Larger font size for larger screens */
+    }
+    header, footer {
+        font-size: 35px; /* Larger font size for header and footer on larger screens */
     }
     header nav .small-logo {
         width: 150px; /* Hide the small logo on larger screens */
+    }
+    nav ul li {
+        margin: 0 10px;
+    }
+    #about {
+        margin-top: 10%;
+    }
+    #contact {
+        padding-bottom: 5%;
     }
 }
 
@@ -263,6 +287,9 @@ form button:hover {
     }
     header nav .small-logo {
         width: 200px; /* Hide the small logo on larger screens */
+    }
+    nav ul li {
+        margin: 0 20px;
     }
     #about {
         margin-top: 10%;
