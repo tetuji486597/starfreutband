@@ -210,6 +210,17 @@ form button:hover {
     color: #333;
 }
 
+/* Initial state for fade-in elements */
+.fade-in {
+    opacity: 0;
+    transition: opacity .5s ease-in;
+}
+
+/* State when the element is in the viewport */
+.fade-in-visible {
+    opacity: 1;
+}
+
 /* Responsive adjustments */
 @media (min-width: 200px) {
     header .logo {
