@@ -216,19 +216,19 @@ form button:hover {
         width: 12rem; /* Even larger width for larger screens */
     }
     body {
-        font-size: 20px; /* Larger font size for larger screens */
+        font-size: 15px; /* Larger font size for larger screens */
     }
     header, footer {
-        font-size: 20px; /* Larger font size for header and footer on larger screens */
+        font-size: 15px; /* Larger font size for header and footer on larger screens */
     }
     header nav .small-logo {
         width: 75px; /* Hide the small logo on larger screens */
     }
 }
 
-@media (min-width: 500px) {
+@media (min-width: 400px) {
     header .logo {
-        width: 25rem; /* Even larger width for larger screens */
+        width: 22rem; /* Even larger width for larger screens */
     }
     body {
         font-size: 30px; /* Larger font size for larger screens */
