@@ -213,7 +213,8 @@ form button:hover {
 /* Responsive adjustments */
 @media (min-width: 200px) {
     header .logo {
-        width: 12rem; /* Even larger width for larger screens */
+        width: 10rem; /* Even larger width for larger screens */
+        padding-bottom: 10%;
     }
     body {
         font-size: 15px; /* Larger font size for larger screens */
@@ -222,7 +223,16 @@ form button:hover {
         font-size: 15px; /* Larger font size for header and footer on larger screens */
     }
     header nav .small-logo {
-        width: 75px; /* Hide the small logo on larger screens */
+        width: 50px; /* Hide the small logo on larger screens */
+    }
+    nav ul li {
+        margin: 0 3px;
+    }
+    #small-logo {
+        margin: 0 0 0 8px;
+    }
+    .music-preview {
+        max-width: 150px;
     }
 }
 
