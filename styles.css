@@ -213,16 +213,31 @@ form button:hover {
 /* Responsive adjustments */
 @media (min-width: 200px) {
     header .logo {
-        width: 18rem; /* Even larger width for larger screens */
+        width: 15rem; /* Even larger width for larger screens */
     }
     body {
-        font-size: 25px; /* Larger font size for larger screens */
+        font-size: 20px; /* Larger font size for larger screens */
     }
     header, footer {
-        font-size: 25px; /* Larger font size for header and footer on larger screens */
+        font-size: 20px; /* Larger font size for header and footer on larger screens */
     }
     header nav .small-logo {
         width: 100px; /* Hide the small logo on larger screens */
+    }
+}
+
+@media (min-width: 500px) {
+    header .logo {
+        width: 25rem; /* Even larger width for larger screens */
+    }
+    body {
+        font-size: 30px; /* Larger font size for larger screens */
+    }
+    header, footer {
+        font-size: 30px; /* Larger font size for header and footer on larger screens */
+    }
+    header nav .small-logo {
+        width: 150px; /* Hide the small logo on larger screens */
     }
 }
 
