@@ -210,6 +210,22 @@ form button:hover {
     color: #333;
 }
 
+/* Responsive adjustments */
+@media (min-width: 300px) {
+    header .logo {
+        width: 18rem; /* Even larger width for larger screens */
+    }
+    body {
+        font-size: 25px; /* Larger font size for larger screens */
+    }
+    header, footer {
+        font-size: 25px; /* Larger font size for header and footer on larger screens */
+    }
+    header nav .small-logo {
+        width: 100px; /* Hide the small logo on larger screens */
+    }
+}
+
 @media (min-width: 1024px) {
     header .logo {
         width: 40rem; /* Even larger width for larger screens */
