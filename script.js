@@ -30,12 +30,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const formMessage = document.getElementById('form-message');
     const fadeInElements = document.querySelectorAll('.fade-in');
 
-    const isElementInViewport = (el) => {
+    const isElementInViewport = (el, buffer = 200) => {
         const rect = el.getBoundingClientRect();
         return (
-            rect.top >= 0 &&
+            rect.top >= -buffer &&
             rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) + buffer &&
             rect.right <= (window.innerWidth || document.documentElement.clientWidth)
         );
     };
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initial check in case any elements are already in view
     checkFadeInElements();
-    
+
     loadEvents();
 
     function handleHeaderCollapse() {
