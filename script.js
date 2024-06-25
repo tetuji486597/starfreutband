@@ -42,7 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const checkFadeInElements = () => {
         fadeInElements.forEach(el => {
-            if (isElementInViewport(el)) {
+            const buffer = el.id === 'video' ? 1000 : 200; // Larger buffer for video section
+            if (isElementInViewport(el, buffer)) {
                 el.classList.add('fade-in-visible');
             }
         });
