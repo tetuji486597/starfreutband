@@ -3,88 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music - Rock Band</title>
+    <title>Starfreut</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Lobster&family=Roboto:wght@400;700&family=Permanent+Marker&family=Rock+Salt&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/16favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="images/applefavicon.png">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet"> -->
+
 </head>
 <body>
     <header id="header">
-        <a href="index.html">
-            <img src="images/logo.png" alt="Rock Band Logo" class="logo" id="logo">
+        <a href="">
+            <img src="images/logo.png" alt="Starfreut Logo" class="logo" id="logo">
         </a>
         <nav>
-            <a href="index.html">
-                <img src="images/logoimg.png" alt="Rock Band Logo" class="small-logo" id="small-logo">
+            <a href="">
+                <img src="images/logoimg.png" alt="Starfreut Logoimg" class="small-logo" id="small-logo">
             </a>
             <ul>
-                <li><a href="index.html">About</a></li>
-                <li><a href="index.html#events">Events</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#contact">Contact</a></li>
                 <li><a href="music.html">Music</a></li>
                 <li><a href="merch.html">Merch</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="music" class="content">
-        <h2>Original previews</h2>
-        <div class="music-previews">
-            <div class="music-preview" >
-                <h3>Strongest Soldier</h3>
-                <audio controls class="preview-audio">
-                    <source src="audio/Strongest_Soldier.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-                <p class="preview-message" style="display:none;">To listen to the full track, please visit our store.</p>
-            </div>
-            <div class="music-preview ">
-                <h3>Livin in the Blues</h3>
-                <audio controls class="preview-audio">
-                    <source src="audio/LivinInTheBlues.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-                <p class="preview-message" style="display:none;">To listen to the full track, please visit our store.</p>
-            </div>
-            <div class="music-preview">
-                <h3>Along the Way</h3>
-                <audio controls class="preview-audio">
-                    <source src="audio/Alongg.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-                <p class="preview-message" style="display:none;">To listen to the full track, please visit our store.</p>
-            </div>
-            <!-- Add more music previews as needed -->
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Welcome to Starfreut Band. We are a group of high schoolers who were tired of classical music
+            and decided to start our own rock band. We have been playing together for over a year and we
+            are just now getting a grip on things. We play a wide variety of genres- rock, r&b, jazz- and
+            have played numerous covers. We have an album coming out this July.
+             We are excited to share our music with you!
+        </p>
+    </section>
+
+    <section id="video" class="fade-in">
+        <h2>Check Out Our Latest Music Video!</h2>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/aa_U9KS71Lk?si=vJl331PqjPNbPmOR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
     </section>
-    <section id="music">
-        <h2>Songs we have played in the past:</h2>
-        <ul>
-            <li>Japanese Denim by Daniel Caesar</li>
-            <li>Don't Think It Over by Her's</li>
-            <li>In The Meantime by Spacehog</li>
-            <li>Sweater Weather by The Neighbourhood</li>
-            <li>Superstition by Stevie Wonder</li>
-            <li>Rosanna by TOTO</li>
-            <li>Just the Two of Us by Grover Washington Jr</li>
-            <li>What a Fool Believes by The Doobie Brothers</li>
-            <li>Where Is My Mind by The Pixies</li>
-            <li>Mind Over Matter by Young The Giant</li>
-            <li>...and much more!</li>
-        </ul>
-    </section>
-    <section id="music">
-        <h2>original album tracklist:</h2>
-        <ul>
-            <li>Along The Way</li>
-            <li>No Favors</li>
-            <li>Fwd: My Heart</li>
-            <li>Flowers on the Far Side</li>
-            <li>Livin' In The Blues (Interlude)</li>
-            <li>Talk About It</li>
-            <li>...and more coming!</li>
+
+    <section id="events" class="fade-in">
+        <h2>Upcoming Events</h2>
+        <ul id="event-list">
+            <!-- JavaScript will populate this list -->
         </ul>
     </section>
 
-    <script src="music.js"></script>
+    <section id="contact" class="fade-in">
+      <h2>Contact Us</h2>
+      <form id="contact-form" action="https://formspree.io/f/xkndlolb" method="POST">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required></textarea>
+          <button type="submit">Send</button>
+      </form>
+      <p id="form-message"></p>
+  </section>
+  
+
+    <footer>
+        <p>&copy; 2024 Starfreut. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
+
