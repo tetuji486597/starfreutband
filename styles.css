@@ -230,6 +230,11 @@ form button:hover {
     color: #333;
 }
 
+.merch-item:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 /* Initial state for fade-in elements */
 .fade-in {
     opacity: 0;
