@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music - Rock Band</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="images/16favicon.png" type="image/png">
-    <link rel="apple-touch-icon" href="images/applefavicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Lobster&family=Roboto:wght@400;700&family=Permanent+Marker&family=Rock+Salt&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -30,33 +27,63 @@
     </header>
 
     <section id="music" class="content">
-        <h2>Music Previews</h2>
+        <h2>Original previews</h2>
         <div class="music-previews">
-            <div class="music-preview">
+            <div class="music-preview" >
                 <h3>Strongest Soldier</h3>
-                <audio controls>
+                <audio controls class="preview-audio">
                     <source src="audio/Strongest_Soldier.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
+                <p class="preview-message" style="display:none;">To listen to the full track, please visit our store.</p>
             </div>
-            <div class="music-preview">
+            <div class="music-preview ">
                 <h3>Livin in the Blues</h3>
-                <audio controls>
+                <audio controls class="preview-audio">
                     <source src="audio/LivinInTheBlues.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
+                <p class="preview-message" style="display:none;">To listen to the full track, please visit our store.</p>
             </div>
             <div class="music-preview">
-                <h3>Song Title 3</h3>
-                <audio controls>
-                    <source src="audio/song3.mp3" type="audio/mpeg">
+                <h3>Along the Way</h3>
+                <audio controls class="preview-audio">
+                    <source src="audio/AlongTheWay.wav" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
+                <p class="preview-message" style="display:none;">To listen to the full track, please visit our store.</p>
             </div>
             <!-- Add more music previews as needed -->
         </div>
     </section>
-
+    <section id="music">
+        <h2>Songs we have played in the past:</h2>
+        <ul>
+            <li>Japanese Denim by Daniel Caesar</li>
+            <li>Don't Think It Over by Her's</li>
+            <li>In The Meantime by Spacehog</li>
+            <li>Sweater Weather by The Neighbourhood</li>
+            <li>Superstition by Stevie Wonder</li>
+            <li>Rosanna by TOTO</li>
+            <li>Just the Two of Us by Grover Washington Jr</li>
+            <li>What a Fool Believes by The Doobie Brothers</li>
+            <li>Where Is My Mind by The Pixies</li>
+            <li>Mind Over Matter by Young The Giant</li>
+            <li>...and much more!</li>
+        </ul>
+    </section>
+    <section id="music">
+        <h2>original album tracklist:</h2>
+        <ul>
+            <li>Along The Way</li>
+            <li>No Favors</li>
+            <li>Fwd: My Heart</li>
+            <li>Flowers on the Far Side</li>
+            <li>Livin' In The Blues (Interlude)</li>
+            <li>Talk About It</li>
+            <li>...and more coming!</li>
+        </ul>
+    </section>
 
     <script src="music.js"></script>
 </body>
