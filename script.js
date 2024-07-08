@@ -2,9 +2,9 @@
 
 // Sample data for upcoming events
 const events = [
-    { date: '2024-06-15', venue: 'Rock Arena', location: 'Los Angeles, CA' },
-    { date: '2024-07-20', venue: 'Stadium X', location: 'New York, NY' },
-    { date: '2024-08-05', venue: 'Music Hall', location: 'Chicago, IL' }
+    { date: '2024-', venue: 'Book Us!', location: 'Houston' },
+    { date: '2024-', venue: 'Book Us!', location: 'Houston' },
+    { date: '2024-', venue: 'Book Us!', location: 'Houston' }
 ];
 
 // Function to load events into the event list
@@ -29,6 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contact-form');
     const formMessage = document.getElementById('form-message');
     const fadeInElements = document.querySelectorAll('.fade-in');
+
+
 
     const isElementInViewport = (el, buffer = 200) => {
         const rect = el.getBoundingClientRect();
@@ -113,5 +115,6 @@ document.addEventListener('DOMContentLoaded', function() {
      logo.addEventListener('click', function() {
         window.location.href = 'index.html';
     });
+    
 });
 
