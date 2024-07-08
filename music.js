@@ -29,3 +29,18 @@ function loadMusicPreviews() {
 
 // Event listener
 document.addEventListener('DOMContentLoaded', loadMusicPreviews);
+const previewAudios = document.querySelectorAll('.preview-audio');
+previewAudios.forEach(audio => {
+    audio.addEventListener('play', function() {
+        const messageElement = audio.nextElementSibling;
+
+        setTimeout(() => {
+            audio.pause();
+            audio.currentTime = 0;
+            audio.controls = false; // Disable audio controls
+            if (messageElement && messageElement.classList.contains('preview-message')) {
+                messageElement.style.display = 'block'; // Show the message
+            }
+        }, 30000); // Stop after 30,000 milliseconds (30 seconds)
+    });
+});
