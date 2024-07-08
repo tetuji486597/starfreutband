@@ -18,9 +18,6 @@ function loadEvents() {
 }
 
 
-
-// script.js
-
 document.addEventListener('DOMContentLoaded', function() {
     const header = document.getElementById('header');
     const logo = document.getElementById('logo');
@@ -29,8 +26,40 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contact-form');
     const formMessage = document.getElementById('form-message');
     const fadeInElements = document.querySelectorAll('.fade-in');
+    const previewAudios = document.querySelectorAll('.preview-audio');
+    window.onscroll = function() {handleHeaderCollapse()};
+    function handleHeaderCollapse() {
+        if (window.scrollY > 50) {
+            header.classList.add('collapsed');
+            logo.classList.add('hidden');
+            smallLogo.style.display = 'block';
+            nav.style.justifyContent = 'space-between'; // Adjusting nav alignment when collapsed
+        } else {
+            header.classList.remove('collapsed');
+            logo.classList.remove('hidden');
+            smallLogo.style.display = 'none';
+            nav.style.justifyContent = 'center'; // Adjusting nav alignment when not collapsed
+        }
+    }
 
 
+    previewAudios.forEach(audio => {
+        audio.addEventListener('play', function() {
+            const messageElement = audio.nextElementSibling;
+
+            setTimeout(() => {
+                audio.pause();
+                audio.currentTime = 0;
+                audio.controls = false; // Disable audio controls
+                if (messageElement && messageElement.classList.contains('preview-message')) {
+                    messageElement.style.display = 'block'; // Show the message
+                }
+            }, 30000); // Stop after 30,000 milliseconds (30 seconds)
+        });
+    });
+
+    // Initial check on page load
+    handleHeaderCollapse();
 
     const isElementInViewport = (el, buffer = 200) => {
         const rect = el.getBoundingClientRect();
@@ -58,20 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
     checkFadeInElements();
 
     loadEvents();
-
-    function handleHeaderCollapse() {
-        if (window.scrollY > 50) {
-            header.classList.add('collapsed');
-            logo.classList.add('hidden');
-            smallLogo.style.display = 'block';
-            nav.style.justifyContent = 'space-between'; // Adjusting nav alignment when collapsed
-        } else {
-            header.classList.remove('collapsed');
-            logo.classList.remove('hidden');
-            smallLogo.style.display = 'none';
-            nav.style.justifyContent = 'center'; // Adjusting nav alignment when not collapsed
-        }
-    }
 
     if (form) {
         form.addEventListener('submit', function(event) {
@@ -105,16 +120,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Initial check on page load
-    handleHeaderCollapse();
-
     // Event listener for scroll
     window.addEventListener('scroll', handleHeaderCollapse);
 
-     // Go to index.html when logo is clicked
-     logo.addEventListener('click', function() {
-        window.location.href = 'index.html';
-    });
-    
+    // Go to index.html when logo is clicked
+    if (logo) {
+        logo.addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+    }
 });
-
