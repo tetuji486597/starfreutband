@@ -21,7 +21,13 @@ body {
     padding-top: 200px;
 }
 
+#bandpic {
+    width: 100%;
+}
 
+#twmacover {
+    width: 100%;
+}
 header{
     background-color: #954500;
     color: white;
