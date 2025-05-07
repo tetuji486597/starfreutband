@@ -68,6 +68,9 @@
 
                 try {
                     console.log('Sending request to server...');
+                    console.log('Server URL:', SERVER_URL);
+                    console.log('Request URL:', `${SERVER_URL}/create-checkout-session`);
+                    
                     const response = await fetch(`${SERVER_URL}/create-checkout-session`, {
                         method: 'POST',
                         headers: {
@@ -76,11 +79,15 @@
                         body: JSON.stringify({
                             priceId: priceId,
                         }),
+                    }).catch(error => {
+                        console.error('Network error:', error);
+                        throw new Error(`Network error: ${error.message}`);
                     });
                     
                     if (!response.ok) {
                         const errorData = await response.json();
-                        throw new Error(errorData.error || 'Failed to create checkout session');
+                        console.error('Server response not OK:', response.status, errorData);
+                        throw new Error(errorData.error || `Server error: ${response.status}`);
                     }
                     
                     const session = await response.json();
