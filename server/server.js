@@ -7,10 +7,15 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Log environment
+console.log('Environment:', process.env.NODE_ENV);
+console.log('Port:', port);
+console.log('Stripe key configured:', !!process.env.STRIPE_SECRET_KEY);
+
 // CORS configuration
 const corsOptions = {
     origin: process.env.NODE_ENV === 'production' 
-        ? ['https://starfreut.com', 'https://www.starfreut.com'] // Replace with your actual domain
+        ? ['https://starfreut.com', 'https://www.starfreut.com']
         : '*',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type'],
@@ -25,6 +30,7 @@ app.use(express.static(path.join(__dirname, '..')));
 // Log all requests
 app.use((req, res, next) => {
     console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
+    console.log('Request headers:', req.headers);
     next();
 });
 
@@ -42,8 +48,10 @@ app.post('/create-checkout-session', async (req, res) => {
         console.log('Creating checkout session for price:', priceId);
         
         const baseUrl = process.env.NODE_ENV === 'production'
-            ? 'https://starfreut.com'  // Replace with your actual domain
+            ? 'https://starfreut.com'
             : req.headers.origin;
+            
+        console.log('Using base URL:', baseUrl);
             
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
@@ -78,6 +86,5 @@ app.use((err, req, res, next) => {
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
-    console.log('Stripe key configured:', !!process.env.STRIPE_SECRET_KEY);
-    console.log('Server URL:', `http://localhost:${port}`);
+    console.log('Server URL:', process.env.NODE_ENV === 'production' ? 'https://starfreut.com' : `http://localhost:${port}`);
 }); 
