@@ -18,7 +18,7 @@ body {
     background-color: #ffea00;
     padding: 0;
     padding-bottom: 50px;
-    padding-top: 200px;
+    padding-top: 150px;
 }
 
 #bandpic {
@@ -31,17 +31,15 @@ body {
 header{
     background-color: #954500;
     color: white;
-    padding: 0 0 1% 0;
+    padding: 0.5rem 0;
     text-align: center;
-    font-size: xx-large;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    transition: height 0.3s, padding 0.3s;
     display: flex;
     align-items: center;
-    justify-content: center; /* Center items horizontally */
+    justify-content: center;
     flex-direction: column;
 }
 
@@ -49,10 +47,10 @@ header.collapsed{
     padding: 5px 0;
 }
 header .logo {
-    width: 20rem;
+    width: 10rem;
     height: auto;
     display: block;
-    margin: 0 0 -1.5rem 0;
+    margin: 0;
     transition: opacity 0.3s;
 }
 header .logo.hidden {
@@ -64,13 +62,14 @@ header .logo.hidden {
 header nav {
     display: flex;
     align-items: center;
+    padding: 0.5rem 0;
 }
 
 header nav .small-logo {
-    width: 100px; /* Adjust the size of the small logo */
+    width: 3rem;
     height: auto;
     display: none;
-    margin-right: 20px; /* Adjust margin as needed */
+    margin-right: 1rem;
 }
 
 header.collapsed nav .small-logo {
@@ -80,8 +79,10 @@ header.collapsed nav .small-logo {
 nav ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
     display: flex;
-    justify-content: center; /* Center the navigation items */
+    justify-content: center;
+    gap: 1rem;
 }
 
 nav ul li {
@@ -92,6 +93,7 @@ nav ul li {
 nav ul li a {
     color: #ffea00;
     text-decoration: none;
+    font-size: 1rem;
 }
 
 section {
@@ -101,8 +103,22 @@ section {
     border-radius: 8px;
 }
 
-h2 {
+h1 {
+    font-size: 2.5rem;
     color: #954500;
+    margin: 1.5rem 0;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #954500;
+    margin: 1.25rem 0;
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: #954500;
+    margin: 1rem 0;
 }
 
 footer {
@@ -218,6 +234,21 @@ form button:hover {
     padding: 10px;
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.merch-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-color: #954500;
+}
+
+.merch-item:active {
+    transform: scale(0.98);
 }
 
 .merch-item img {
@@ -225,20 +256,21 @@ form button:hover {
     height: auto;
     border-bottom: 1px solid #ccc;
     margin-bottom: 10px;
+    transition: border-color 0.3s ease;
+}
+
+.merch-item:hover img {
+    border-color: #954500;
 }
 
 .merch-item h3 {
-    margin: 10px 0;
+    margin: 1rem 0;
+    font-size: 1.5rem;
 }
 
 .merch-item p {
-    font-size: 18px;
+    font-size: 1.2rem;
     color: #333;
-}
-
-.merch-item:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Initial state for fade-in elements */
@@ -252,92 +284,39 @@ form button:hover {
     opacity: 1;
 }
 
-/* Responsive adjustments */
-@media (min-width: 200px) {
+/* Simple responsive adjustments */
+@media (max-width: 768px) {
     header .logo {
-        width: 12rem; /* Even larger width for larger screens */
-        padding-bottom: 5%;
-    }
-    body {
-        font-size: 20px; /* Larger font size for larger screens */
-    }
-    header, footer {
-        font-size: 20px; /* Larger font size for header and footer on larger screens */
-    }
-    header nav .small-logo {
-        width: 50px; /* Hide the small logo on larger screens */
-    }
-    nav ul li {
-        margin: 0 3px;
-    }
-    #small-logo {
-        margin: 0 0 0 8px;
-    }
-}
-
-@media (min-width: 400px) {
-    header .logo {
-        width: 16rem; /* Even larger width for larger screens */
-    }
-    body {
-        font-size: 25px; /* Larger font size for larger screens */
-    }
-    header, footer {
-        font-size: 25px; /* Larger font size for header and footer on larger screens */
-    }
-    header nav .small-logo {
-        width: 60px; /* Hide the small logo on larger screens */
-    }
-    nav ul li {
-        margin: 0 5px;
-    }
-}
-
-@media (min-width: 768px) {
-    header .logo {
-        width: 25rem; /* Even larger width for larger screens */
-    }
-    body {
-        font-size: 35px; /* Larger font size for larger screens */
-    }
-    header, footer {
-        font-size: 35px; /* Larger font size for header and footer on larger screens */
-    }
-    header nav .small-logo {
-        width: 150px; /* Hide the small logo on larger screens */
-    }
-    nav ul li {
-        margin: 0 10px;
-    }
-    #about {
-        margin-top: 10%;
-    }
-    #contact {
-        padding-bottom: 5%;
-    }
-}
-
-@media (min-width: 1024px) {
-    header .logo {
-        width: 40rem; /* Even larger width for larger screens */
-    }
-    body {
-        font-size: 50px; /* Larger font size for larger screens */
-    }
-    header, footer {
-        font-size: 50px; /* Larger font size for header and footer on larger screens */
-    }
-    header nav .small-logo {
-        width: 200px; /* Hide the small logo on larger screens */
-    }
-    nav ul li {
-        margin: 0 20px;
-    }
-    #about {
-        margin-top: 10%;
-    }
-    #contact {
-        padding-bottom: 5%;
+        width: 8rem;
     }
     
+    nav ul {
+        gap: 0.5rem;
+    }
+    
+    nav ul li a {
+        font-size: 0.9rem;
+    }
+
+    p {
+        font-size: 1.1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin: 1rem 0;
 }

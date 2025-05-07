@@ -8,6 +8,7 @@
         <link rel="icon" href="images/favicon.ico" type="image/x-icon">
         <link rel="icon" href="images/16favicon.png" type="image/png">
         <link rel="apple-touch-icon" href="images/applefavicon.png">
+        <script src="https://js.stripe.com/v3/"></script>
         <!-- <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet"> -->
     
     </head>
@@ -33,15 +34,10 @@
         <section id="merch">
             <h2>Our Merch</h2>
             <div class="merch-items">
-                <a href="index.html#contact">
-                    <div class="merch-item">
-                        <img src="images/merchpreview.png" alt="freut-a-licious">
-                        <h3>freut-a-licious unisex tee</h3>
-                        <p>$20.00</p>
-                        <p>To purchase, click and fill out the contact form
-                        ; we will respond with more info!
-                        </p>
-                    </div>
+                <a href="#" class="merch-item" data-price-id="price_1QHuG0GDaHReC4uNzLskmJIg">
+                    <img src="images/merchpreview.png" alt="freut-a-licious">
+                    <h3>freut-a-licious unisex tee</h3>
+                    <p>$20.00</p>
                 </a>
                 
                 <!-- <div class="merch-item">
@@ -56,6 +52,57 @@
     <footer>
         <p>&copy; 2024 Starfreut. All rights reserved.</p>
     </footer>
-    <script src="script.js"></script>
+    <script>
+        const stripe = Stripe('pk_live_51QHsy3GDaHReC4uNZsiCOhShvnATuZdgeqdBUoXMYwReqGrxjBWHiqiptPh3DkSkvOcR3nFgajHRzw7APebuVArM001MiQvOTq');
+        const SERVER_URL = 'http://localhost:3000';
+        
+        document.querySelectorAll('.merch-item').forEach(item => {
+            item.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const priceId = e.currentTarget.dataset.priceId;
+                
+                if (!priceId) {
+                    alert('Error: Product price ID is missing');
+                    return;
+                }
+
+                try {
+                    console.log('Sending request to server...');
+                    const response = await fetch(`${SERVER_URL}/create-checkout-session`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            priceId: priceId,
+                        }),
+                    });
+                    
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error || 'Failed to create checkout session');
+                    }
+                    
+                    const session = await response.json();
+                    
+                    if (!session.id) {
+                        throw new Error('No session ID received from server');
+                    }
+
+                    console.log('Redirecting to Stripe checkout...');
+                    const result = await stripe.redirectToCheckout({
+                        sessionId: session.id
+                    });
+                    
+                    if (result.error) {
+                        throw new Error(result.error.message);
+                    }
+                } catch (error) {
+                    console.error('Checkout error:', error);
+                    alert(`Error: ${error.message || 'Something went wrong. Please try again.'}`);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
