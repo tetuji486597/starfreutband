@@ -9,9 +9,12 @@ const port = process.env.PORT || 3000;
 
 // CORS configuration
 const corsOptions = {
-    origin: '*', // In production, replace with your actual domain
+    origin: process.env.NODE_ENV === 'production' 
+        ? ['https://starfreut.com', 'https://www.starfreut.com'] // Replace with your actual domain
+        : '*',
     methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type']
+    allowedHeaders: ['Content-Type'],
+    credentials: true
 };
 
 // Middleware
@@ -38,6 +41,10 @@ app.post('/create-checkout-session', async (req, res) => {
     try {
         console.log('Creating checkout session for price:', priceId);
         
+        const baseUrl = process.env.NODE_ENV === 'production'
+            ? 'https://starfreut.com'  // Replace with your actual domain
+            : req.headers.origin;
+            
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             line_items: [
@@ -47,8 +54,8 @@ app.post('/create-checkout-session', async (req, res) => {
                 },
             ],
             mode: 'subscription',
-            success_url: `${req.headers.origin}/success.html`,
-            cancel_url: `${req.headers.origin}/merch.html`,
+            success_url: `${baseUrl}/success.html`,
+            cancel_url: `${baseUrl}/merch.html`,
         });
 
         console.log('Checkout session created:', session.id);
