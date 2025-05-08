@@ -2,9 +2,9 @@
   "name": "starfreut-server",
   "version": "1.0.0",
   "description": "Server for Starfreut merchandise",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "dependencies": {
     "express": "^4.18.2",
