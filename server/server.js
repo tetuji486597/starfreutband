@@ -34,8 +34,14 @@ app.use((req, res, next) => {
     next();
 });
 
+// Add a simple test endpoint
+app.get('/api/test', (req, res) => {
+    console.log('Test endpoint hit');
+    res.json({ status: 'ok', message: 'Node.js server is running', env: process.env.NODE_ENV });
+});
+
 // Create a checkout session
-app.post('/create-checkout-session', async (req, res) => {
+app.post('/api/create-checkout-session', async (req, res) => {
     console.log('Received checkout request:', req.body);
     const { priceId } = req.body;
 
@@ -76,6 +82,13 @@ app.post('/create-checkout-session', async (req, res) => {
             code: error.code
         });
     }
+});
+
+// Also keep the original endpoint for backward compatibility
+app.post('/create-checkout-session', async (req, res) => {
+    console.log('Original endpoint hit, redirecting to /api/create-checkout-session');
+    req.url = '/api/create-checkout-session';
+    app._router.handle(req, res);
 });
 
 // Error handling middleware

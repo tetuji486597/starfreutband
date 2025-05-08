@@ -69,9 +69,9 @@
                 try {
                     console.log('Sending request to server...');
                     console.log('Server URL:', SERVER_URL);
-                    console.log('Request URL:', `${SERVER_URL}/create-checkout-session`);
+                    console.log('Request URL:', `${SERVER_URL}/api/create-checkout-session`);
                     
-                    const response = await fetch(`${SERVER_URL}/create-checkout-session`, {
+                    const response = await fetch(`${SERVER_URL}/api/create-checkout-session`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
