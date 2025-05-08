@@ -5,11 +5,9 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
-const port = process.env.PORT || 3000;
 
 // Log environment
 console.log('Environment:', process.env.NODE_ENV);
-console.log('Port:', port);
 console.log('Stripe key configured:', !!process.env.STRIPE_SECRET_KEY);
 
 // CORS configuration
@@ -67,7 +65,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
                     quantity: 1,
                 },
             ],
-            mode: 'subscription',
+            mode: 'payment',
             success_url: `${baseUrl}/success.html`,
             cancel_url: `${baseUrl}/merch.html`,
         });
@@ -97,7 +95,15 @@ app.use((err, req, res, next) => {
     res.status(500).json({ error: 'Internal server error' });
 });
 
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
-    console.log('Server URL:', process.env.NODE_ENV === 'production' ? 'https://starfreut.com' : `http://localhost:${port}`);
-}); 
+// For Passenger compatibility, check if this file is being required by another module
+if (module.parent) {
+    // If being required (e.g., by Passenger), just export the app
+    module.exports = app;
+} else {
+    // If running directly (e.g., local development), start the server
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => {
+        console.log(`Server running on port ${port}`);
+        console.log('Server URL:', process.env.NODE_ENV === 'production' ? 'https://starfreut.com' : `http://localhost:${port}`);
+    });
+}
